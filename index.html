@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>워니네 한가위</title>
-<meta name="description" content="보름달, 억새, 등불, 달냥이가 함께하는 귀엽고 따뜻한 추석 밤 미니 이벤트 페이지">
+<meta name="description" content="보름달, 억새, 등불, 달토끼가 함께하는 귀엽고 따뜻한 추석 밤 미니 이벤트 페이지">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
@@ -212,12 +212,11 @@
   .moon .c3{width:7%;height:7%; top:66%; left:30%;}
   .moon .rabbit{
     position:absolute;
-    bottom:2%;
-    left:74%;
-    transform:translateX(-50%) rotate(-4deg);
-    width:27%;
-    opacity:0.6;
-    filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    bottom:15%;
+    left:50%;
+    transform:translateX(-50%);
+    width:44%;
+    opacity:0.42;
     animation:dalnyang-float 4.2s ease-in-out infinite;
   }
 
@@ -671,7 +670,6 @@
     box-shadow:0 0 34px 10px rgba(255,207,122,0.3);
   }
   #bunny-3{ bottom:-4px; right:-14px; }
-  #bunny-3 .fill{ width:34px; height:auto; }
 
   /* ================= BUNNY ================= */
   .bunny-spot{
@@ -682,7 +680,7 @@
     line-height:0;
     z-index:5;
   }
-  .bunny-spot img{ display:block; }
+  .bunny-spot svg{ display:block; }
   .bunny-spot .fill{
     opacity:0.55;
     transition:opacity 0.3s ease, transform 0.3s ease;
@@ -702,8 +700,6 @@
     50%{ transform:translateY(-3px); }
   }
 
-  #bunny-1 .fill{ width:32px; height:auto; }
-  #bunny-2 .fill{ width:28px; height:auto; }
   #bunny-1{ bottom:17%; left:13%; }
   #bunny-2{ bottom:2%; right:24%; }
 
@@ -846,11 +842,9 @@
     gap:8px;
     margin-bottom:6px;
   }
-  .ending-dalnyang{
+  .ending-rabbit{
     width:52px;
-    height:auto;
-    opacity:0.88;
-    filter:drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+    opacity:0.7;
     animation:dalnyang-float 4.6s ease-in-out infinite;
   }
   .ending-tiny{
@@ -885,7 +879,14 @@
         <div class="crater c1"></div>
         <div class="crater c2"></div>
         <div class="crater c3"></div>
-        <img class="rabbit dalnyang-img" alt="달빛 아래 앉아있는 달냥이" title="달이 예쁘네요." />
+        <svg class="rabbit" viewBox="0 0 100 70" aria-hidden="true">
+          <ellipse cx="50" cy="52" rx="26" ry="14" fill="#3a2a12" opacity="0.55"/>
+          <circle cx="30" cy="34" r="11" fill="#3a2a12" opacity="0.55"/>
+          <ellipse cx="24" cy="16" rx="4" ry="13" fill="#3a2a12" opacity="0.55" transform="rotate(-14 24 16)"/>
+          <ellipse cx="34" cy="14" rx="4" ry="13" fill="#3a2a12" opacity="0.55" transform="rotate(8 34 14)"/>
+          <rect x="58" y="30" width="4" height="26" rx="2" fill="#3a2a12" opacity="0.5"/>
+          <ellipse cx="60" cy="24" rx="10" ry="5" fill="#3a2a12" opacity="0.5"/>
+        </svg>
       </div>
     </div>
   </div>
@@ -903,17 +904,27 @@
 
   <svg class="reeds-wrap" id="reeds" viewBox="0 0 900 140" preserveAspectRatio="none" aria-hidden="true"></svg>
 
-  <button class="bunny-spot" id="bunny-1" data-bunny="1" aria-label="숨겨진 달냥이">
-    <img class="fill dalnyang-img" alt="달냥이" />
+  <button class="bunny-spot" id="bunny-1" data-bunny="1" aria-label="숨겨진 달토끼">
+    <svg width="32" height="26" viewBox="0 0 30 24" class="fill">
+      <ellipse cx="15" cy="17" rx="10" ry="6" fill="var(--ivory-dim)"/>
+      <circle cx="7" cy="11" r="5" fill="var(--ivory-dim)"/>
+      <ellipse cx="4" cy="4" rx="2" ry="6" fill="var(--ivory-dim)" transform="rotate(-16 4 4)"/>
+      <ellipse cx="9" cy="3" rx="2" ry="6" fill="var(--ivory-dim)" transform="rotate(10 9 3)"/>
+    </svg>
   </button>
-  <button class="bunny-spot" id="bunny-2" data-bunny="2" aria-label="숨겨진 달냥이">
-    <img class="fill dalnyang-img" alt="달냥이" />
+  <button class="bunny-spot" id="bunny-2" data-bunny="2" aria-label="숨겨진 달토끼">
+    <svg width="28" height="22" viewBox="0 0 30 24" class="fill">
+      <ellipse cx="15" cy="17" rx="10" ry="6" fill="var(--reed)"/>
+      <circle cx="7" cy="11" r="5" fill="var(--reed)"/>
+      <ellipse cx="4" cy="4" rx="2" ry="6" fill="var(--reed)" transform="rotate(-16 4 4)"/>
+      <ellipse cx="9" cy="3" rx="2" ry="6" fill="var(--reed)" transform="rotate(10 9 3)"/>
+    </svg>
   </button>
 
   <div class="intro-copy">
     <h1 class="intro-title">워니네 한가위</h1>
     <p class="intro-line">달빛 아래,<br>오늘도 함께 🌕</p>
-    <p class="intro-sub">둥근 달이 떠오른 밤,<br>달냥이와 함께 보내는 작은 한가위.</p>
+    <p class="intro-sub">둥근 달이 떠오른 밤,<br>달토끼와 함께 보내는 작은 한가위.</p>
     <button class="scroll-cue" id="scroll-down" aria-label="아래로 스크롤">
       <span class="arrow">↓</span>
       <span>달빛 따라 내려가기</span>
@@ -925,7 +936,7 @@
   <div class="panel">
     <span class="eyebrow">CHUSEOK · 01</span>
     <h2 class="section-title">오늘의 송편 운세 🥮</h2>
-    <p class="section-desc">달냥이가 송편을 몇 개 가져왔어요.<br>마음에 드는 하나를 골라보세요.</p>
+    <p class="section-desc">달토끼가 송편을 몇 개 가져왔어요.<br>마음에 드는 하나를 골라보세요.</p>
     <p class="fortune-pretext">어떤 송편에 오늘의 운이 숨어 있을까요?</p>
 
     <div id="tteok-grid" class="tteok-grid"></div>
@@ -961,11 +972,11 @@
 <section id="blessing">
   <div class="panel" style="position:relative;">
     <span class="eyebrow">CHUSEOK · 03</span>
-    <h2 class="section-title">달냥이가 전하는 한가위 덕담 💌</h2>
-    <p class="section-desc">오늘 필요한 말 한마디를<br>달냥이에게 받아보세요.</p>
+    <h2 class="section-title">달토끼가 전하는 한가위 덕담 💌</h2>
+    <p class="section-desc">오늘 필요한 말 한마디를<br>달토끼에게 받아보세요.</p>
 
     <div class="blessing-card" id="blessing-card">버튼을 눌러 덕담을 받아보세요 🌕</div>
-    <p class="blessing-sign">— 달냥이 🐾</p>
+    <p class="blessing-sign">— 달토끼 🐰</p>
     <button class="primary-btn" id="blessing-btn">덕담 하나 받기</button>
   </div>
 </section>
@@ -973,19 +984,24 @@
 <section id="hunt">
   <div class="panel" style="position:relative;">
     <span class="eyebrow">CHUSEOK · 04</span>
-    <h2 class="section-title">숨은 달냥이 찾기 🐾</h2>
-    <p class="section-desc">달빛 아래 어딘가에<br>달냥이들이 숨어 있어요.<br><br>숨은 달냥이 3마리를 모두 찾아보세요.</p>
+    <h2 class="section-title">숨은 달토끼 찾기 🐰</h2>
+    <p class="section-desc">달빛 아래 어딘가에<br>달토끼들이 숨어 있어요.<br><br>숨은 달토끼 3마리를 모두 찾아보세요.</p>
 
     <div class="hunt-progress-row">
-      <span>달냥이</span>
+      <span>달토끼</span>
       <strong id="hunt-progress-count">0</strong>
       <span>/ 3</span>
     </div>
 
     <div class="hunt-moon-wrap">
       <div class="hunt-moon"></div>
-      <button class="bunny-spot" id="bunny-3" data-bunny="3" aria-label="숨겨진 달냥이">
-        <img class="fill dalnyang-img" alt="달냥이" />
+      <button class="bunny-spot" id="bunny-3" data-bunny="3" aria-label="숨겨진 달토끼">
+        <svg width="34" height="27" viewBox="0 0 30 24" class="fill">
+          <ellipse cx="15" cy="17" rx="10" ry="6" fill="var(--moon-glow)"/>
+          <circle cx="7" cy="11" r="5" fill="var(--moon-glow)"/>
+          <ellipse cx="4" cy="4" rx="2" ry="6" fill="var(--moon-glow)" transform="rotate(-16 4 4)"/>
+          <ellipse cx="9" cy="3" rx="2" ry="6" fill="var(--moon-glow)" transform="rotate(10 9 3)"/>
+        </svg>
       </button>
     </div>
   </div>
@@ -1008,7 +1024,7 @@
         <button class="again-btn" id="photocard-remix">카드 다시 만들기</button>
       </div>
       <p class="photocard-hint">이미지를 길게 누르거나(모바일) 우클릭하면(PC) 저장할 수 있어요.</p>
-      <p class="photocard-caption">달냥이가 카드에 몰래 들어왔어요. 🐾</p>
+      <p class="photocard-caption">달토끼가 카드에 몰래 들어왔어요. 🐰</p>
     </div>
   </div>
 </section>
@@ -1017,7 +1033,12 @@
   <div class="ending-inner">
     <div class="ending-scene">
       <div class="ending-moon" id="ending-moon"></div>
-      <img class="ending-dalnyang dalnyang-img" alt="달을 바라보는 달냥이" title="오늘도 좋은 하루." />
+      <svg class="ending-rabbit" viewBox="0 0 100 70" aria-hidden="true" title="오늘도 좋은 하루.">
+        <ellipse cx="50" cy="52" rx="26" ry="14" fill="var(--ivory-dim)"/>
+        <circle cx="30" cy="34" r="11" fill="var(--ivory-dim)"/>
+        <ellipse cx="24" cy="16" rx="4" ry="13" fill="var(--ivory-dim)" transform="rotate(-14 24 16)"/>
+        <ellipse cx="34" cy="14" rx="4" ry="13" fill="var(--ivory-dim)" transform="rotate(8 34 14)"/>
+      </svg>
     </div>
     <h2 class="ending-title">Happy Chuseok 2026</h2>
     <p class="ending-body">같은 달을 보고 있다는 것만으로도<br>조금은 가까운 밤이니까.</p>
@@ -1025,23 +1046,23 @@
     <p class="ending-body">맛있는 것도 많이 먹고,<br>걱정은 잠시 내려놓고,</p>
     <p class="ending-body">모두 따뜻하고 행복한<br>한가위 보내세요. 🌕</p>
     <p class="ending-sign">— WONY &amp; 워냥이들</p>
-    <p class="ending-tiny">달냥이도 즐거운 한가위 보내는 중 🐾</p>
+    <p class="ending-tiny">달토끼도 즐거운 한가위 보내는 중 🐰</p>
   </div>
 </section>
 
 <div class="bunny-progress" id="bunny-progress" hidden>
-  🐾 <span id="bunny-count">0</span> / 3
+  🐰 <span id="bunny-count">0</span> / 3
 </div>
 
 <div class="toast" id="toast"></div>
 
 <div class="complete-modal" id="complete-modal">
   <div class="complete-card">
-    <div class="glyph">🌕 🐾</div>
-    <p>숨은 달냥이들을
+    <div class="glyph">🌕 🐰</div>
+    <p>숨은 달토끼들을
 모두 찾았어요!
 
-달냥이들이 모두 모이자
+달토끼들이 모두 모이자
 오늘 밤의 달빛이
 조금 더 환해진 것 같아요.
 
@@ -1053,10 +1074,10 @@
 
 <div class="complete-modal" id="secret-modal">
   <div class="complete-card">
-    <div class="glyph">🐾</div>
-    <p>이것까지 찾으셨네요? 🐾
+    <div class="glyph">🐰</div>
+    <p>이것까지 찾으셨네요? 🐰
 
-달냥이가 작은 행운 하나를
+달토끼가 작은 행운 하나를
 몰래 두고 갔습니다.
 
 올해 남은 날에도
@@ -1071,17 +1092,6 @@
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function rand(min,max){ return min + Math.random()*(max-min); }
-
-  /* ---------- dalnyang mascot artwork ---------- */
-  var DALNYANG_SRC = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAACcCAYAAAAjzArZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAADELSURBVHhe7V0HVFTX2jXFxK4IKlUBxW5sUWNJfzEmUWMsscfEl5dmNEVT/zSTWKICNuwaNbGgFAHFBvYuvRdRQWTovZfZ//rOMDicO3dmUMow3L3WXu8F586cmbvnzHe+2gwSJBg4mvF/kCDB0CCJXILBQxK5BIOHJHIJBg9J5A2E8rIylJaWwPfUSVy/eoX9t4S6gSTyekZFRQW8vTzx4dzZGDloAEY80w+2pp0YXx45HD8uWYzTJ44jJyebv1TCQ0ISeT2Bdu2wkGDMmDSxStTaOLRvLyz4cD77UhTk5/NPKUFHSCKvBxQXF8Pl4AH06WYpELKuXLxwAfJyc/mnlqADJJHXA/75exeG9O4pEG5NSaaN/40b/NNL0AJJ5HWMa5cv4YVhQwSCfViSHX/h3Fn+ZSRogCTyOgSZKW++8qJAqI/KUYMHSjt6DSCJvI5ALkGyw3mBqqN5+9YweuoJWHRoK/g3Mb466jncio3hX1aCGkgiryPERkdhwmuvCsSpSuvOxuhva42Z06dj2e9LMffdqey/u7Rpyf6NfzxP8tRI/nXtkEReR1izYhl6mHcRCFNJq05GGP/6a7hy7Qby8/NRVl7OrktOScXKv1bCvENbWHVsL7iOp/3KFfxLS+AgibwOkJWVyexmXpBKkoBfHTMKvmfO8JcylJeX4+Tx4xgxeCC6GncQXK/KXlYWuHv7Nv8UElQgibwOsN5+tUCMStp0MUHbx5thy8aNVbs35BUoyc9BTspdFOdl0h/Yn318fTGgh63gOXjOnz2z+gIkVIMk8loGRTUH9ewhEKKSZIIM7NMbWZkkZtJ3OTLvRSHmvDPCjm9HpO9epN8OZsInnDx5En1surEvB/9cStLr+d+UvC1ikEReiwgPC8XsqZMFIlSyu1lnxi1bt1Vdk5+eiAifvfB3Wc3od2gVQo9tRm7KnaodffWaNehmYsSu5Z9Tyd9+/J6lDkgQQhL5Q4ISrQiFhYXMk3Lw338w9oUxAvGpkmzx8a+9ioysrKrnuR92AQFujghwsUeAqwOj3+FVuOt/ouoxpaWlePP1sczVyD+nkj0tzaSwvwgkkesIEhAJm6KN7i6H4bTWEe9OHI9506fpFNGkA2S3Lp2xZ9fOqucsLylElO+/VeJWZdiJHSjMSq567LFj3rCzNBc1W+wsTLFv756qx0t4AEnkIkhPS2PprpR3Qm66mZMnsfwTTV4TTTR66nEs+vxzpKalVb6CHNmyOAS4CQVO9He1R2LIOVSUPzBBxr78sqjJYtPZGHOnT0OyTFb1eAkKSCKvBO3SZNNSuJxETTs0+bmfsdPu3dBGOmz2726D5OSUqtcrK85HQoAP/A79JRA4E/nh1Yg4tRNFucovBeDp6QWj5o/DVkTotJu/8+Y4HD54AJkZGVXXNXU0aZEr7erzZ3yxbZMTC5VTDjcvnkchHRh7d7PA2XPnq712fvp9RPr+A//DqwQCVzLk2Bb2OCWiY2Lw7MAB7Dn511FSac5MnfAmvNzdqr1mU0WTFTl5QkgE77zx+kObIKI06wzrTh2ZCTFi4AAc2L+ff3lky24h/OROgbAZXezh72KP6PMHUZj1YPcnTBn/Bqy0BIhUSYfhPTt34F5CQtWXuqmhSYmcDo8Jd++yErO6yA5UkhKtzDq0wzvj34Svry8qFJ7AaijMSUPMpcPwJ9OkUtQBrvZM4H7OKxF6bCtkUTdQXlJc7brdu3ejS+sWora5OpLZRTs7HZibIpqMyKluknzJFAa3szQTCKHGpN1aJYnKvEMbmLZtBauO7WBn3RXL/vgd9xIT+WVUQV5Rhqz7sYg6dxDBnhsR5LkRIUc3I8hrI25ddkP6nRCUlRTylyEjIwOjhg1lB1kxT4sm0q/Wji2b2Je9qcDgRU7pqBT2pmID/obXlF1NjJiwyB3YplkzdLcwRV+brujY4im8+vzzmDbhLfz226+IiopCuY6mQXlpMfLT7yEjPhyZ9yKZeVJaqNnfHRERiTnT32UuRX6NurCfTVfmLTp13Jt/aoOEwYr8dtwt/PHzT4IbrCvJHOjWqWMVjVq1xND+fTGsTw9MeGMsNq51gNP69bh4+QoSExMRER7BL6EGUGPPaEFKSir+WrEcA3v2gFm71uwLyL8HXUi+/qAAf/7pDQoGJ3JZ0n32czxm6GDBDdWFJGj6X+OWT6Nnt254fkh/TH5zHNYv/Qo7/voO/p6bEX56Lwqz0/mXbhDEJ9zD9z98jx5WFjBu0VynPHSe5P9f9usv7HBqiDAokdPPL/m3+Zuoid3NFG43EodRy6fxTM/uGDGwP5YsmA+npV/iittmhHlugL/bWkQe3YAgNweEn9iJ0uI8/uUbDOQ1CQoMxP99sxjPDxvK3ouVsfZcdJ5kwoQEBfJP3+hhECIn0+SX77+t1qhHJ3YxQafWrdhBtG/P3lj0wQysX/o1grw248bhNYg4uhEh7o6ci88eMRecUV5axC9DLxB7Kw7Lly/HkP792bnB0qid8H1rIUV5DQmNXuQeri5ay8xUSbY22a/kx+5kZIy3X3sev3z1Cc7uW42rhxwQ7e2EQJFQO5EilAlBvqgo1++ys5SUFGzf5IRJb45D726WzGfPfxaa+NG8uUhNqe6jb6xotCKnjlI/fbukRhFKEnj75k9igF13vPGfV7Fj5Tc4f0AhbBKwJnEzutjjpvNKZCZGQV6Z763vuJ8kw5Zt29GzmxUrltalpI6o9K0H+PnxT9no0ChFTvklb7/+GvN58zdHHWkXIzu13ZNPYO60d7B11f8hzGsD/F0d1ZgjmmiPYM/1KC/RT1NFEygQtnrVKjz7zIAaeWJeHPEsbl6/xj9do0KjE7nbIWedUluVpBtqYWyMUQP7YP+mFbjs7IDoYxvUCFgHujni1pXGmw9SWFiEc+fOYfa0qbCjIusaBJOOehzhn67RoNGInHaiXdu2aCwtUyXt3GSe9LG1xu9f/w+RvnsQ7OaA4Brt3Cp0WYMgj/VIjQvgl9YosWvX3+jStjU6t26hc+SUPv/GiEYhcsqRppA8/6GL0ZzqKO26Y+aEsTj9rz1iTm1HsNuDypuH4U3nvxBxeg8Ks1P55TVaxN2Ow5yZM1jFki7+dYqUUrZmY4Pei5zC8p/Of1/wgfNURijNOrTFy88NwbpfvkCs7y62cwdS4pMa4epMOnAe+gtJYRch1zFc31iQnJyM5X/8gf523QWfqTqS0CmrsTE1NdJrkUdHRmLKW+O0JlSRwDu1boGeVhb4eM5UeG1bhpgT23QXN8sCXCP8eyWpgCHq7D6UFGjOKWnM2LF1E3pZmbGNQluGIx34D+3fxz+F3kJvRU6RNypi4D9gdezU6mkMHTQQjr99jZuuaxHkvk5ngbMUV9rtjzhWlaKRqCndlcQf6L4OMRcOsap6Q4RcLkd+WgJSQ33gsWsNhgzoz9rU8Z+xOjYWr4teipzyT3QROAtfmxhhzOjRcN74G8I81yNQjZA10c9lDeIDfFi95b3gs6z/ScTpv5mw4656IOWWP4rzHlTXGxIqykuRmRCJSJ897Esd7uEA3/1rMfblF2FhpN2fTqWB9Gur79A7kUeGh+sscAujdpg28Q3ccN2AUA/avYUi1kgXe4Qe34bclOq51RUlRSjJz9b7qOajgIJZ6XdCEXZyFzPVFEUbis/l1N/LMWX8OFgaa/envzh8qN63wtArkVPKp64zdewsLbBg3gzEnNnLXIMCAWshs8HdHJEQ6MNyupsa0u8EI+z4tmr9XpQMcnOEzz4HvDLyWcHnro7/nTubf3q9gt6InCpV3p85XfABqpIOROYd2mFQn574YeF8BB7dijAPoYCrUc1NVIbnKdGqICOJX4pBg3ZwMlFCvbfC/7D4YZt+Gc86r8fYF8dojZBSYOngvn/5l9Ib6IXIqb8JtVfT5kWh8rJBfXtj1XcfI+AImShr4e8ivEEPSIdJRwS6ObKdm+xOurGBR9bh1kUX5KYl0F3nl2O4kMuRnXQLIV6b4Hd4tZrPqzojvNbhisd2DLCzVXQI0OB1GdqnJ4ID9TNQphci/+6rLwQfGk+qULfpao1Ny75hAudvCE8Sc6j3Ntz1O47b1zwRfW4/Yi+64K7fCaTdDkZpIY0MbEICB5CbmoCI07tFe72oI5mCnjtXoK9dL63JXZPffF0v7fMGFblycCv/YfHs1smYHYJ22v+CIHL36WCD+x9ajfDTu1Gcl4GKijKWVFVSkIPysqbZFLMwKxW3LrkqBK7OhNNA2tGdVv4fbEy7aE0BoECRvqHWRM53bNIlIkZpnNo8KRSc6Glpii1rliLMcx2rzOFvgjqStyDm3AHIy0v5l21yKC3Kw53rXgh0J/OuZgJnnyXt6O6O+HnxApi2E286SqTUZ32bZfTQIicRK3sFLv3pR5ZkT9mB1Kznh8Vf4cA/e1hKrNgkYfpS0DX8h6RKchNSOdoPn83DXd+dNXIRkt1NbdiamkkigFyO+2EXEXRkneAzqikvH16HcS+MRFcTRR2sGOn+67LJ1RceSuRUMUKJOvSt7d/dWvAmVUnCp2nCvqdOsjbHBGqm+fWCTzXmg1uZdECPrlb47uNZCD66tUYJVtTjO8x7B2tu39RRkClD6LEtGj0pupJci0f3OKC7ualWs4XaWesLaixycvXp6svmSTWYP3/3DSuY5f9NlfQBdmzdCt8umI9z/65WeFHUfOjqSLY49fe+H3wOZcUF/PKbFCiYlRLjx84wmnJzasKwo05Y+vWHsNYicvqV1hfUSOQ0gOlRx2drmoimpGnb1hj3yku4fEDhBfAj4R5aVXVgYrkl9N/KtmqH/lL8t9taBHqsx73gMwadTKUryCd+P/wCc6HW5LBJny//NyUpJyj42DaMYs2aNAud+k3qA3QWOeV0j3/1ZcEbqRua4NppV8T67kaw10YWuIj02YvwU7uYjzfMeytzhYWf+huhJ7Yj6sw+lmdyL8gHuSnxeltJ3xBIiwtk5xNerNVIWZiVwr7pvIJ93tSyjg6qgsdWmi37Nv6OTm00H0LJJNUH6CRyOjyuWvaH4E3UJimaSe0Thg/sj91/7wbK8lmBQklhLoryslCQlYyi3HSU5GehIDuVRSqLctLZvxfnZ6G0iZsmYqDPkDYBvkW0wka3Z6Yd/RJSiD/qzL9IiryCe0FnEOatPuRPJAcAfRGmv/UfjdHQYf37sGS7hoZOIj9x7KhOHakoWECtHvi/60Lz9m3Qx6Yra4BPM3Ik1BYq2OjE2AuHEOzpxMR94+BytktTsIz+nhzjxwZxlZUVIyf5Nuubri1gFHrEAW5/O7Agnab8c33wm+skcmqYKWpLdzFh1fAdn26O4YMGYtTQwezgSKLVRfDKBpombVpjy+ZNKCxueslSdQ3KGad0YeqUmxR2CcmR15B+O5BNsaioKGdjFgn5GUmIOX8Q/odWsXEuvLBVSY4APxd7TJk0kd1r/r4qSS2yGxpaRV5cXCxYuCopwX7E0CE44u6GS5cu4er1G9i2bQcmT3obVp1NBAn4StcTfftN27ViCVe25l3g7uqKkpKmGY2sb8jVpBDTlyDuyhGFiSJipvAM99qADUu/QndLS1GXIuUjUfp0Q0KryK9dviRYuJIUrKGys6CgQDYqWxW5ubnw9fHBgv9+gOED+sKk5VNoSW3LjDuwdsdtH2uGF0ePxteLFiE7O0dwvYT6A6U6UE4PVUHxQtZE8rSEntyJQXaaYyVrVizjX7JeoVXkK/9YKli0krQbT544QeXRcnYwpMMOje9TorikFNHR0Th6xB0Oq1dh565dCAkJRWSk/gQMmirIl04R0YcN+Qe5OuCnxQtZ+2heH0rOfXcKi443FLSKnOxxftFE+nmicdjrN2yofCSN7LvFMv7CT+5C9Nn9yEyIoE+Re0YJtYqKMlTkpKEiNRZl94JQkZNcNbJcG8geT4sLQqC70tsiFLE2BrmvxX7HH2GjwWQh8rlN9QmtItc0Rpt66x319GCPKynMwa1LLqwYmHKVKcJGp/fk6OsoLxaOBZHw6JAXpKPQ+29kfjsFqROGIH3WK8j+dT5KAk8z8WuCnG1KtxF2fHtlYE0oYF1I7kR/r614ZcTgqt7uPCl9w+XgAX4J9QaNIs/KytSYRNX+ycfgd+Mme2x+pgzBXk6CQwv9Ld7/FAqzDaNDql6gvARldwKQvfwTJI+0QVLnDpDZWCDJqjPuW3dA6uRnUBZ1RWNuGs0juuN3QhEEeggzhUi7P31BYk5swsfvzxboQ5XUHKqhoFHkhIUffShYsJI0HPX4iZPscTQimwIKfEiY7DzyuVIFfEFm0yk1I7edEsUlJTrPENIGeVkuik7vRfqcF5HcxxIys06QdTWHrFslu1tANsAKOesWMh+5GGg2UYTPHkVqhBoBi5HZ7ZV9aoI8NrAhXvcjLuPkMS+0f7KZQCNKUr5SQxVUaBW5pp2cihlWrVjBHkeh9Ns3vEQTgejv8YGU+mr4KCoqYpMfvlm8GPNnzcCfv/0KL09PVKibdagryktRkRKJHMevkTyqB2RWppB1NXsgbhUm2XZC1pLZkBeIt7TLz0xiofuaHDZZyZybA0uxoJHoual3UVqkSKUmR8Lgvr1FTRZiQ6XfahW501pHwWKVpKY+3y1ZjMIiRa5I9v1YlmvCfzhKkcddPYJyAy9iyC8owGanjbDqrJjG3KVtK3Ro/jg6PPkY+tpa4/yFi/wlWiEvSEPRyV1ImzEasl4WkJl1Fgib0dpCIXLzdshZswhylZHlPIpz0xHhs1drrSf9MtO9I7Mz+vwBpMb6sWorBR58acsr5Bj74vOi06IpsY/qCxoCWkVOeeD8gpW0of81N60Kw8vLihF32ZXlQ1QXOP28rcb9iCuoKDNskW/asBH9e9iKRgFfHTOKjQ/XFWW3riP7zw+R1K8TZFZmkFmq372raNoZsqHmKL7kqtFcoYBQUvhF+Lspk7Me7OhVnhYXe5YMd9fPG9n3YxSpyxo8NzPffVdj41Bqu90Q0Cpy6pCkaSx3r64WcDui6F1NJ/asJNrNKUei8kBTaZNT+wd2+DTg6viS0jK89NxwdDU2Es3noAjwyhXLUFam2bUqL8pFkc8/SJs2HElW7SEzMxUKWpVkl1ubQzawK3K3/wCUa/doUTpyQsBphBzbjKAj65mw6SAZ7LUJ0ecOMP95Xto9VOhQF1tWVoa1jo4s6Me/ZyWpiqwhRp9rFTlB04huyhyc9s47KChUmCy0UydHXWeuqRAvJ3YYpYp5qlAxZNBBMzAwCGbtxYMiRIsObTBpwnjk5mqYHldRiuLzh5A6fgCSrDpBZq5F4JamkFl3Qcq4ocjft4y5FnVFaWEei2fcD7uAhMDTzOWblRiN0ofIx6dqsY5PPyl4z0p+8wUdhusfOomcZrLzC1ZSkSLbFmtWr6l6fAVls6XcRertQOSmxaO8xPDTYEnklH/T9nFxD4OSvbtZacy0rMhKRNZP70HWo4vo4VKxe5tBZmGKJJuOSP9oPIouOdP2zD+dDpBX/cIqk7UeBocPu6CfrXiIn8ZPNgR0EjkNMaXZMfyiVUmTgX1ONw3viRj+3buHVbNrivyR92Hs86P5S6uhLD4IadNHKtyBvLCVZOaLCZJH2yDH4SuU3mn4xj7BwcEs9ZZ/z0pSn3mxwva6hE4iJ2grmqCbN3r4MKSmirutDB3RMbF4doD4LFESf6fWT+P3n37kL62GsrgAFtCRdX/gMXmwe5PAuyDJth3S//c6ii8egjxXd/OkLhEZEYEOTz0heN9KUieHhshh0VnkVGmv6QBKNG7xFDasX18tENLU8N7sOWoLCei/Oz71BF4aMxqhISH8ZdVQnnIXWb/OgmygOWQ2leaKlTmSyHVobQbZ6K7I2/oTypOj+UsbFH7+/hg1bCirD+C1QRw5aAB/Sb1AZ5ETaDAsjdPgF6+kRfs2+PTjj5t0XnhGZhbeHPsaWjdrxjwN1F6aPhuj5o+hn113+Pj4avcwVJSh5MZRZHz1NpLH9IaslyWSbI2R8nxPZC6egtIQH+Z90TfciruNkYOeETXXqEZY63uvA9RI5BSx+vj99wSLV5J2qzkzZvCXNUm4urrgy88/x5QJb2FgDxv88N13uHLlCv8wcRTloST8LPIOLke2/afI3fwjis7sg7w4k3+k3iAjMwOWGvolvjtxPO4n3uMvq3PUSOQEqsAWK4Xr3KYlfv7+W/6SJgkqAsnMykJGlmJKRdHDlPXJy4HSAsiLciDP119xK3ErNham7duK7uSvjRnFkv7qGzUSOe3kdHjgF68k/US7Hz7EX6ZXoCqkqMgoFFemIkioPVy8eAkjBg9q3DY5tf7S5EqkHI3Y2Fj+Mr1AZmYWlv/5J2ZNm4IxI0agh6UFpkyahCOenigtbZjEIUPDuQsXMaRvb9GdnCb5NQRqJHLKY6FWb/ziifTGBvXqgTI9rNVMTUvH5AkT0LOrBcw7tIFF5XBWOkMM7N0TThs21OiwnJ9fgOJi3R/fVHDh4kWNPczJ1KXC+PpGjUROY6fFvCs01feDObP4S/QCy5YtFw23dzXpAHOjtjh1+hR/WTWQTR0SGob5772HLxd8hg1r1yE7u/59vvoKcht7HjmCdhoivj8uWazfIifXz0/fLhEsXEmqEtrg4MBf1uC4n5iIAb17wcKorWDNStKYlnlzZmnczY96emJALzvmEuz49BNo/0Qz9LG1xuUrVyVzpxJU9K4pd2XF0l/5S+oFOoucTsWa3IftnngMVy5f0rtA0FEvT1iadIR1Z/FkfuJAu+4a1/7e9KmCkD39/yF9euJ/8+bi7x3b2XlE9RkawifckJg24S3RsH6fbpasNqEhoLPIb8fdEvWskG1LpXBp6foRXlbFnr17WbGC2GGISJmU74x/A+mZ4u6tvtZWgigmkZ6XfgnaPdGMFXYP7m2H+bNnYb2DA06eOMHOA00BtEEM6dtH8PkoSW5nGp3TENBZ5DQGXOzQSd/et/7zCvIKtOcw1zcuX73GmlKqE6iSJi2a44vPP0eGiMhp6EDHFuJ50jypYILMN/I2DehhCy8vL/4pDQ5JSUl4dtBAUfchkXrbNwR0Fvn5M76CRStJ4evFXyxCQeUkCX0CTbXoZ9cDVsbip37ahV0Ou4h28QoKCkbf7jYa6xfFSL8Sk9+egJQUw+pWkJaewRpG7T9wgJVALvlyEQb16S0qcppI0lDQSeRkWx7av0+wcCXpsLHWwUFjjnRDYvPmLTBp9TTLrVE1W6ghKZXwjRkxnLW1E8Mxb28MHzhAUL+oyQRSpdHTzRHRwP0AawN0fynesN7REfNmzYCFiRH74nftZAyj5o9rLH1rqFxygk4iJ2hqF0diIdtXn7Fr5w68NHok+tp2Y5146abYmHbG7GlTWWKRJmzZug29rMyrvefuZooa1+7mirF/ihssFD39G/mOUxp5CnJySgp27dyJ54YOhp2FGYyeUhG1Dl/2sS+MYdZAQxzGdRa5WCctattMY8Dd3BV1nvqKktJS+AcEwMlpI3755VdsctqIwwcPoqBQs9+Wdq8vFn0Bs3bVC5NN27bEpLfexKLPF+C5wYNgbtSBHTyVJg2ZKWTG9bQ0Y1+k2uq7Ut8gE+76DT/MnzuHNWtlQ4O7mGg842jiok8+4l+izqGTyOnbJxbOJxtscL8+OH/+PH+ZXkOTT1wVcXFxeGPsazBr16ra+yYTzV6l5C/+7l0c+GcvvvnyC0ydMhn/efklvDdzBpb+/BNLv22s8PT0xKihgxS/Vg9xJlFHqhmuz0OoTiKnw5uYyGkntzTuiLhbcfxlBgEvr6Os2oc/UJHHxtND3CWWk5PDPA6NGd7Hj1e11tD1/KEryXyhQWv1AZ1ETm0pxr30vGChROWsn4awteoDX335FbNBVd8z7Whjnh2CsPAI/uEGATJRbt68CbuuFizPh7/nYqQvQk08UJSwRQPX6ho6iZwCQTR0ll8kkd4U5QkrW1IYEijA0cfWRhAtpc5hCz75CDkaPDKNGVSeN+GNN9Dxqcc12t70K059ySkQSLUEHZ56krXz7t3NUqOnRZX1Mb1ZJ5FT8SmNxeAXSDRr3wYzp0yBLNmw/MCEmJgY2FqYw5obs01583RoFfOrN2ZQrOPLzz5hX2QxE4XEbdOpIyw6dsD0ye/g60UL4XvmLC5eOI/9+/dj+YoVGNq/L/PA8GaeOtZ1Zy2dRE6HBH5hStLP2VtvjGv4kH5FGeQFOajIvIvy+2GQ59CXTjwXRRfkFxTilTGjqs09ol+uLm1bIy1NvM9gY4aruzsG9e4pLnByiZp0wCtjRsPZ2RkJieIjDMnlOKCnncaSOCKd9+qySb9OIqe5QYN69hAsTslBfXo1aPs3eUEGCn32I+unGUibNgoZ88ch568FKKUe3Y94VqC5R/3ZjVJU4JMLbeXy5fzDDAajnx0iamrQ+2/VrBnenzMHkRHh1RoR0fTn3NR41nbu7s0TSLsTgpKifHh7e6N/dxvBc/GkFnJ1BZ1EHuDnx0qX+IURaWd7/aXnUdEQIi8vRVliKHJWLWJNdpLMjCCzMUeSpQnuWxshbfYwlN9+tKY7ZJKQe/TLzz7DN0u+wdmzZ1BkgAUT5RXlOH36FNo8Jp4P3qVNC4wf9zruxkYhNeYGYs4ewJ0bx5i489Pvs/mfygG4NFKHuhwT3N2PsIIV/vlUSee6urLNdRI5uRBpJAa/MCIdPGa9O5XlMtQryvNQdN4Z6e//B8n9rJBkalK9CU8PC8gGdUXONiqsrr0voKF6kVLT0rDos89g3KK54B4rSTt8VFQUsu4EIoC64bJ5nvaIveSCxNALCPbcyP5b0fPcnk13lleOdfn040+0+tkv1VGsRSeRkz9TrEK/q3F7PD/qOfYh1QsqKlCRHoNcp++QPMZO0WxHpF9gUvdOyPrx/Ro1wGyqOH/hEl4Y/qz6g2IXEzaWcsVyxcCF+JveVQ35qRMudTFODD7LmrzS36ijccixLYrBaJVITk6BXVcrjUKvq5ErOok8LCRYw9jxzuhhYcpfohY09rC8RHMYXRNIrEVn/0Xaey9C1quyF7cacVc1o7dojxyHLyHPk0SuDStX/iXqQTNv1xpTJ45HbJwi4Jca6892bUUv81VsLEtRdgruh15AmPc2RJ3ZB1nUNZTk57AROqm3AlCUEY/vvvqCeeP451eSDqB1AZ1ETi5EsYgn/YS9NHI4ktUkINHBpCg3HVkJkawtMNlvd657sw+gKKdmO3/ZbT/krFqApP6VZgm1K+bFrUr6AjxrjuKLLg16KG4MoBSH6dOmigZ+2j7+GLZt3lSVf0PN+FOibyDmwiHEXfNAdvKdymei8eaZbI4rmSnUAjr63H6EeG1C1PEtOO76L3p1rZ7opkraSGlDrW3oJHLCM3a2gkURKf10SP++8Pf3VzxQLkdFaTGyk+IQH3AK4ad2sUb8NAzVz3klbjr/xey1qLP/IjflLjuVawI11ik654zUWWOQZNUOMtMuQkGrUjkkaoAVcrd+C5Q/TCvjpoXY2Bg8P3IE653O318i5dvL1EQmaROTaxiPE3fNs6q5P9npwcd3on/v3szPzr+GkjevX+Of5pGhk8ipvlOs9M3WrDM7kYeFhaGkMBdpt4MQc94ZwZ4b2KwZPyZq4SwaEn7MhYMoKdBQ8U7N6C8cRuqkQUiyMoHMXL3tXUULM8isTZH66kDk7V6Kinzhr4sEISg/ZxANtRKZ9/PCiGH8JVWgTYqmOuck30b2/WgUZCmG5crl5Yi74q6412S7u9gj/KwzvljwabW4A8+6CAzpJHJy7WgaddjdtBPcD+1D3KXDVSM5BKJWwyCP9VVuJnWoyLqHrJ/mQtbDVDEvhxe16u5tbookayOkfzAOhef+Zb8AEnTDypUrWSiev69ESkT77uuv+EsYaKpI2u0QRPruVRw6aXjtkbW4fdWDTRZJjw9noy0D3B2ZrV6cfhsLP/qvaLEzOTfqoqJfJ5ETFnw4X7CoKpFbmOGHz+cj1ntjjcZXB3luQEpMpZmjBmV3/ZE6dQRkttqa0XeGbJgFslctRFmcYniuBN1AcYCvvvhCbVSSopvGrZ6Gp7s7fxnbwWmmEM2DYnM9D69hv9xsCNphe9y65MpmhebIbiEtLhA5Mjq0yrFu/XqNRRYNKvLN69cJFqRkp9at8NV/ZyDI04mNoebFrI7KYae0E4ihLOYGUib2h8xWTTN6omkXJFm3R/q8l1F0Zj8qpKnPNUZGRgbmz5vHAj38fSW2eewxxN9VHiwrIZcjR3Zb4RMXGZFIf8+4o7i3NDBNefjf8/ffGn3x1LaitoNCOov8rM9pwYKUpJ+fiW+9gWvOuu/i/odWI+zEdo1Tmstlt5D14zTInqFm9BYKs8SKbO/KWTojLJC74VuUJxlmymt94N79+5g6aaLaDmMUxqeyvzIuAEZmSkKgD24eXCG4r6okxwMPp7UOrIsB/1pK0kST2obOIqdolKb8lV5WZgj13ip4o2KknzfKc1BGxNSivARFl12RsWAckp/rCVkPMyTZGCNldE9kLByP0pvHIC/ScHCVoBV5+fkYM+xZtR4Pqk2d/NYbgngxHTSjzx1EgMj0bSXj/RUj6VVBVf1i/RIb3CanuehifVfIdhvUyw7Om1cg7Iij4M0Kac8OK2yupxbIC7JREnQSeXt+Qday95G7bgkKT+6CvIgCPPzHL+Fh8P7cuWqSskxYMtZ6hwclfqqguaz+Lvx9rWSl+Gl6M3+PPvvsM4056ru3b6v2+NqAziKnnI2XRw4XLEpJ45YtserbjxDiofCLipFs8ZCjW5irUWfIyyEvzmWRS02jtCU8HO4nJWH0iOEwadUcnVs9jU6tnmINXCe/PRF37whrMenQSffvpvNyxUBi7h7TYZTiIxQFVRV5Xl4e3n/vPZbvxOtHySsXL1R7rdqAziKnbqR//PyTYFFK0un84w/mCt5wNbIT+GokBp1FWUn1RkTlZSWVf5N254YAFUts3OiEj/47H/NmTsePP/6fxq69ZSUFiL1wiNnlqmPL2URnjw2KQycXab6bkIApb09kPSV5/ShZF3WfOoucsGfnDsGiVDm4V3dEnNiOADU/Y+RaohTMuMtuVQGgspJiFOdmQBZ9nR1Sbl/zRHyADwsH04coCb7+QYl2uqYSlxRkId7vJPOB06jyQDdHRJ35V9RjFhwSipdHPcd877x2iDRdkDJeaxs1EjkVNIv1Jye7vF8PW+xd9xvCPdepEfkaRJ7ejfz0JHbYzLwXzQ4mocc2IejIOvYTd9N5Jfv5o1nviSHnUFZU/4NNJdQM9OubmxyHjPgIlldekqe+nyTB0+soemvIK5/77pQ6qRCqkchLS0swtG8vweKU7Njiafy+5CP4u63lRG7P3IUp0deReS8Sty67IuToZoULigWPeLvOniX1pN8N45cgoZGCgk5r1qwR9ccTqf89OThqGzUSOdnlv3z/rWBxStIJ/ZUXX0C4xzqWUM8ESzuz1yZEnzuAuKtHEOiu8L6IBRFUhX7nxlHIDbRIoakhKysbXy9cyDoI87pR0svdjb+sVlAjkRMogUYs75hIzdY9djsi9EilWN0cEeS5UVE1wsK+mn2rSpL5EnfVA6XFUhahISA5JRXvvPVm1fBenhSDuZeQwF9WK6ixyCm3nITML1LJLm3b4Ov57yL0qBMTKx1GeAHrQkrLTfA/zbwuEho/MrOy8YydeEHzzMmTmLbqAjUWOeUVfDRvrmCRSlK65sgRz+HawVXiwQIdSPnnmQmNv92xBAXS0tJh1l59UQaRPCvUxKouUGOREzxcXQSLVJKiWeQi2rVuGcI8Hm4XD3Bbi9iLh1kFigTDQMK9exg5bKhomi2RyuMK62CQw0OJnNw84jWfnWBlYoQJL49G8LFtCKwsdtWVFEwIP7kTmfej+ZeV0IhBJXZzZkyHZUf1NrmSGx3t+UsfGQ8lcsLihQsEC6wiDYvq2BGHnH6tqujWhYqc5NVIirjCSugkGBZoZI26vHWeJ44d5S99JDy0yKnglF+cKsk2nzzhTUR5O+lsm/sf+gvRF5xRVigFgQwR5IJ+dcxorZ1vKRGwNnPKH1rklLBFESp+gars190a+zb8jnAvzUlbSlIJVU6KMCFIguEgPCwcPbtZivZaVHLpTz/ylz40HlrkBN9TJwWLUyW1OJg+ZRICPDZqtM0VmYmbkRJzU2v1voTGj23bt7NYi6aUW5oWV1vtKR5J5BTmp9EY/AKVZA36jTtg0+rfEC7iaWE1oW4OuBd8FuUlhtfjXIJ6zHtvLptioUnoZCnUBh5J5ASKgPKL4/nyqBG46OyIoMqQ/gPas6BP3FV3FOc13rk6EmqO+Ph4DB3QX7RKiEi7fW1McX5kkRNo/gu/QFWSb/TLTz9EiIdqdqIi9TbCZzcKsoWNayQYPnbv3g3bLopffF4zSlK/H+r78yioFZFfv3pFsDhV0iGjh5UlnJb/gGD3tZUtDFYj4vRulp7JJ9dLaDqYPGmSaHs6Iu3mj9q7vFZETu6eD+fOFixQldQtdeSw4Th/gFpRrGd99BS9OCQ0ZVy6dIn17dHU7ZYCj49STFErIifQyBWxgooqoZt0xLR33kZWfDiKpVpNCZWu6M8+/RTduLlMPHds2cRfqjNqTeQEqrTmF6dKMltMWrfAn3/Wfm8NCY0XSTIZ+tl11+g7H9a/D1JTtHd3UIdaFTm5FGk2I79AVdIhw7jFk9iz9x/+cp1hiFPXmjr++H0p6xDA60WVa1Ys4y/TCbUqckJsdJTGEjml0Pv3sIGHpwd/uQBJsmQkxMfj2vUb2LplC/7evg2uri44dOgw3N3dcfnyZaSq6Y0uoXEhPT0DA3v11BjyJ3O4IL/mKR+1LnLCgX/2iM4YUmVfGyt4qvGDJqekICg4GJ9/+inmTH8XZkYdWIenfrbWbIYmtRmjbktD+/XBkP79MGr4cMyeORMO9g64fv06MjMfzeUkoWGwY9s2Nt2b14mSdM+pLUpNUSciJ9CkXX6RPCmJa3DfXvDy9ERZZULOnt27MXPaVNb43ca0M0xaPVXV3Ynv8kSTkimYQOmbZM/1se6KF54bgc8++QSenl5SQ4tGhpzcPIwcPFCgE1XSFMKalsnVmcgp42zGpImCRfJkg5jMTbF9+3bMnTUT3S1M0aH5YxoDBGIkodNOQF2gaDbNc8/0x1pHB5aw3yAjGCXUGP/88y86tRKv6CdS59uaoM5ETqD2ApqKK5Ts1skIJi2bVw2DfRiBqyM7rZt3Yb8M586d45cnQQ9Bk67fen2s+il0laSi55pUENWpyAmR4eE6Cb2uSLY89fpo3/xxfPjB+ygqkpLA9B07du5ED3NTNqqHv59Kbt24gb9MFHUucgI1cWxIoStJWW+ffvwRvzwJegY6nw0dOEB0hhGRdnNyWeuCehE54cK5sw8tdJpKZtLyKfS0NId5hzZo/+Rj6NTqaY3uJjEO7NUDcXHc5AQJeod9/+xF5zYtNQaI9u3ZzV+mFvUmcgIlcmnq2aJKenP0TSbb7JUXXsAPSxbj++++w44dO7B1y1b88M0SjH1hNDtotn28GfsSkG3PP0+156x0Q7q5CmfgSNAvFBQWYeSgZwT3UJVvv/6aTn7zehU5gXJcxr30vGDBPMldOPH113DKxxeJiYnVnqMgJxOlhTTdTY6s7Gyc8PbGt19/ycZm06FVLNmHvjRWXTrh7Jkz1Z5Pgn7CycmJeco0OSJOnzjOXyZAvYucoGlcIu3gVsZGmDd7FhJlyfylyEu7h8QgX9y9eYxNMigvLYBcLkdRcTECg0Lw8y+/oLulBdvdrYyrJ+Sbtm2JV198Cbl10FRSQu0jISEBQ6iwgruPqqRaBm2od5FT1pnYdGf6xpLZ8cHsWYiMVPRdKcpORbYsDnnp91BWmIu7fifYbKLQ41sQfXYfm+rMg9xQfy1fjtHDhlZ9cciG72trjWPe3vzDJegxfvj+e0EQUJUU6qdaY01mS72L/FZsjGChSpL9bWbUDteuXGGPLci8zxrzh3pvQ5TvXsjCL7MpvyFHnRDstQHhJ3cgMzGKfwmG4pISnL9wEe/PmYX+PWzx5cKFcHerm66pEuoOaRkZWmMnVMugaUJFvYuc8lr4RSppYdQWH/1P4eKjme1JEZcVsyIrSZVE1Jw/+vwBJnDa1YtydWvanpUl1ZA2RpA78Ydvv2HBQl4vSr444lmNtnm9i1xTTktf667Ys0eRgltRVsIE7e/6oNUzzaJJjw9DZlIMMu6EoiiXJsBJMHRcv34Dva2tRM0WMn9pmLJYQ6J6F/n82TMFiySS52PYwAE4ddqn6rG5KXcQ6bMXgUfWIcDNHtHnD6K0KI/9m7xCkVNOMyXLS6UopiGD6gdmTZ+udtYokepAP53/vugolnoVOSVtLfhwvmCRRDocmnZoi8CAgMpHV6AkLwvJMTdx+5oHEoPPoiDjQVV/SX42ZJFXcfemN+L9TyEl9iaKpZ3dYHH+/HmYtm0l0I2Sr40ZhQA/mhsqRL2KnH5OflyyWLBAJTu3boGwMOpJLkdeWiLuhZxD3FVPZpsX5jwQcHFeJm5dclUM1HJeqRiz57KGzY7MvBclVf8bIHJyc/HaC2NEG4aSyUJ1oOS941GvIidossl7Wplj27Yd7HEJwb4I9nJiM4aCj25iu3Z5aSn7N+p6GygYvqVg2ImdyE+vHjyS0PhBsRCKdosVVZDJsuiTj9T2aKl3kUuQUN+QRC7B4CGJXILBQxK5BIOHJHIJBg9J5BIMHv8Pq0RYK+9/Ax0AAAAASUVORK5CYII=";
-  var dalnyangImg = new Image();
-  var dalnyangLoaded = false;
-  dalnyangImg.onload = function(){
-    dalnyangLoaded = true;
-    if (typeof drawPhotocard === 'function') { try { drawPhotocard(); } catch(e){} }
-  };
-  dalnyangImg.src = DALNYANG_SRC;
-  document.querySelectorAll('.dalnyang-img').forEach(function(im){ im.src = DALNYANG_SRC; });
 
   /* ---------- stars ---------- */
   var starsLayer = document.getElementById('stars');
@@ -1147,20 +1157,20 @@
     { name:'수리취송편', color:'#a68a5b' }
   ];
   var FORTUNES = [
-    "오늘은 생각보다\n좋은 일이 하나 생길지도 몰라요.\n\n— 달냥이의 제보 🐾",
+    "오늘은 생각보다\n좋은 일이 하나 생길지도 몰라요.\n\n— 달토끼의 제보 🐰",
     "맛있는 걸 먹으면\n행복이 조금 더 가까워지는 날이에요.",
     "오늘은 너무 서두르지 않아도 괜찮아요.\n천천히 쉬어가세요 🌕",
     "반가운 사람과\n좋은 시간을 보내게 될지도 몰라요.",
     "오늘의 작은 행운은\n생각하지 못한 곳에 숨어 있습니다.",
-    "산책을 나가면\n무언가 중요한 순간을 놓칠지도...\n\n달냥이는 아무것도 모릅니다. 🐾",
+    "산책을 나가면\n무언가 중요한 순간을 놓칠지도...\n\n달토끼는 아무것도 모릅니다. 🐰",
     "오늘의 행운 아이템:\n\n맛있는 야식."
   ];
   var FORTUNE_HINTS = [
-    "달냥이가 살짝 알려줬어요.",
-    "믿거나 말거나 🐾",
+    "달토끼가 살짝 알려줬어요.",
+    "믿거나 말거나 🐰",
     "송편이 알고 있었습니다.",
     "달빛 아래에서만 유효한 운세입니다.",
-    "달냥이는 책임지지 않습니다."
+    "달토끼는 책임지지 않습니다."
   ];
 
   var grid = document.getElementById('tteok-grid');
@@ -1297,7 +1307,7 @@
 
       wishFollowupTimer = setTimeout(function(){
         wishArrival.textContent = Math.random() < 0.15
-          ? '달냥이가 잘 전달해준 것 같아요. 🐾'
+          ? '달토끼가 잘 전달해준 것 같아요. 🐰'
           : '이제 달에게 맡겨볼까요?';
       }, 2400);
       wishFadeTimer = setTimeout(function(){
@@ -1464,21 +1474,23 @@
       ctx.restore();
     });
 
-    if (dalnyangLoaded){
+    {
       var placement = pcSeed.rabbitPlacement;
-      var pw = (placement === 'moon' || placement === 'cloud') ? 116 : 92;
-      var ph = pw * (dalnyangImg.height / dalnyangImg.width);
+      var rs = (placement === 'moon' || placement === 'cloud') ? 1.15 : 0.85;
       var pcx = mx, pcy = my + 46;
       if (placement === 'cloud'){ pcx = pcSeed.cloudX; pcy = pcSeed.cloudY + 34; }
-      else if (placement === 'roof'){ pcx = 500; pcy = 676; }
-      else if (placement === 'card'){ pcx = 320; pcy = 812; }
+      else if (placement === 'roof'){ pcx = 500; pcy = 674; }
+      else if (placement === 'card'){ pcx = 320; pcy = 804; }
       ctx.save();
       ctx.translate(pcx + pcSeed.rabbitDX, pcy + pcSeed.rabbitDY);
       ctx.rotate(pcSeed.rabbitRot * Math.PI/180);
       if (pcSeed.rabbitFlip) ctx.scale(-1,1);
-      ctx.shadowColor = 'rgba(0,0,0,0.3)';
-      ctx.shadowBlur = 8;
-      ctx.drawImage(dalnyangImg, -pw/2, -ph/2, pw, ph);
+      ctx.scale(rs, rs);
+      ctx.fillStyle = 'rgba(58,42,18,0.55)';
+      ctx.beginPath(); ctx.ellipse(0,14,30,16,0,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(-22,-10,13,0,Math.PI*2); ctx.fill();
+      ctx.save(); ctx.translate(-28,-30); ctx.rotate(-0.26); ctx.beginPath(); ctx.ellipse(0,0,4.5,15,0,0,Math.PI*2); ctx.fill(); ctx.restore();
+      ctx.save(); ctx.translate(-16,-33); ctx.rotate(0.16); ctx.beginPath(); ctx.ellipse(0,0,4.5,15,0,0,Math.PI*2); ctx.fill(); ctx.restore();
       ctx.restore();
     }
 
@@ -1546,9 +1558,9 @@
   var countEl = document.getElementById('bunny-count');
   var huntCountEl = document.getElementById('hunt-progress-count');
   var FOUND_MESSAGES = [
-    '달냥이를 발견했어요! 🐾\n\n1 / 3',
+    '달토끼를 발견했어요! 🐰\n\n1 / 3',
     '또 한 마리를 찾았어요!\n\n2 / 3',
-    '마지막 달냥이까지 발견!\n\n3 / 3'
+    '마지막 달토끼까지 발견!\n\n3 / 3'
   ];
 
   function updateProgressUI(){
