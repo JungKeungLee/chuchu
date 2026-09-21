@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
     color-scheme: dark;
@@ -1406,10 +1407,13 @@
   var SUPABASE_ANON_KEY = 'sb_publishable_tcXAEHq-BNa8xkLeZoS3pw_rvGV2cUq';
   var supaReady = SUPABASE_URL.indexOf('YOUR_') !== 0 && SUPABASE_ANON_KEY.indexOf('YOUR_') !== 0;
 
-  function supaHeaders(extra){
-    var h = { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY };
-    if (extra) for (var k in extra) h[k] = extra[k];
-    return h;
+  var supa = null;
+  if (supaReady){
+    try {
+      if (window.supabase && typeof window.supabase.createClient === 'function'){
+        supa = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      }
+    } catch(e){ supa = null; }
   }
 
   var wishWallList = document.getElementById('wish-wall-list');
@@ -1433,12 +1437,14 @@
   }
 
   function loadWishWall(){
-    if (!supaReady || !wishWallList) return;
-    fetch(SUPABASE_URL + '/rest/v1/chuseok_wishes?select=id,content,created_at&order=created_at.desc&limit=25', {
-      headers: supaHeaders()
-    })
-      .then(function(res){ if (!res.ok) throw new Error('fetch failed'); return res.json(); })
-      .then(function(rows){
+    if (!supa || !wishWallList) return;
+    supa.from('chuseok_wishes')
+      .select('id,content,created_at')
+      .order('created_at', { ascending: false })
+      .limit(25)
+      .then(function(res){
+        if (res.error) throw res.error;
+        var rows = res.data;
         wishWallList.innerHTML = '';
         if (!rows || !rows.length){
           var p = document.createElement('p');
@@ -1455,16 +1461,14 @@
   }
 
   function insertWishToWall(content){
-    if (!supaReady) return;
-    fetch(SUPABASE_URL + '/rest/v1/chuseok_wishes', {
-      method: 'POST',
-      headers: supaHeaders({ 'Content-Type': 'application/json', 'Prefer': 'return=representation' }),
-      body: JSON.stringify({ content: content })
-    })
-      .then(function(res){ if (!res.ok) throw new Error('insert failed'); return res.json(); })
-      .then(function(rows){
-        var saved = (rows && rows[0] && rows[0].content) ? rows[0].content : content;
-        renderWishWallItem(saved, true);
+    if (!supa) return;
+    supa.from('chuseok_wishes')
+      .insert({ content: content })
+      .select('content')
+      .then(function(res){
+        if (res.error) throw res.error;
+        var row = res.data && res.data[0];
+        renderWishWallItem(row && row.content ? row.content : content, true);
       })
       .catch(function(){});
   }
@@ -1509,16 +1513,22 @@
   var wishTarget = document.getElementById('wish-target');
   var wishFollowupTimer = null;
   var wishFadeTimer = null;
+  var wishCooldownTimer = null;
+  var WISH_COOLDOWN_MS = 4000;
 
   wishBtn.addEventListener('click', function(){
+    if (wishBtn.disabled) return;
     var text = wishInput.value.trim();
     if (!text) { wishInput.focus(); return; }
+    text = text.slice(0, 80);
 
     saveWish(text);
     insertWishToWall(text);
     wishBtn.disabled = true;
     clearTimeout(wishFollowupTimer);
     clearTimeout(wishFadeTimer);
+    clearTimeout(wishCooldownTimer);
+    wishCooldownTimer = setTimeout(function(){ wishBtn.disabled = false; }, WISH_COOLDOWN_MS);
 
     var startRect = wishBtn.getBoundingClientRect();
     var endRect = wishTarget.getBoundingClientRect();
@@ -1543,7 +1553,6 @@
       wishArrival.textContent = '✦ 소원이 달에 도착했습니다.';
       wishArrival.classList.add('show');
       wishInput.value = '';
-      wishBtn.disabled = false;
       wishBtn.textContent = '다른 소원 빌기';
       renderWishLog();
 
