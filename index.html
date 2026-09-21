@@ -727,6 +727,30 @@
   }
   #bunny-3{ bottom:-4px; right:-14px; }
 
+  .hunt-complete{
+    margin-top:30px;
+    padding-top:26px;
+    border-top:1px solid rgba(246,239,224,0.12);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    text-align:center;
+    animation:card-in 0.6s cubic-bezier(.2,.8,.3,1) both;
+  }
+  .hunt-complete .glyph{ font-size:1.5rem; }
+  .hunt-complete .lead{
+    font-family:'Gowun Batang',serif;
+    color:var(--ivory);
+    font-size:1.05rem;
+  }
+  .hunt-complete p{
+    color:var(--ivory-dim);
+    line-height:1.7;
+    font-size:0.92rem;
+  }
+  .hunt-complete .again-btn{ margin-top:6px; }
+
   /* ================= BUNNY ================= */
   .bunny-spot{
     position:absolute;
@@ -844,6 +868,85 @@
     min-height:40px;
   }
   .close-btn:hover{ background:rgba(246,239,224,0.08); }
+
+  .reward-modal{
+    position:fixed;
+    inset:0;
+    z-index:80;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(5,7,20,0.82);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.4s ease;
+    padding:24px 16px;
+  }
+  .reward-modal.show{ opacity:1; pointer-events:auto; }
+  .reward-card{
+    max-width:480px;
+    width:100%;
+    max-height:92vh;
+    overflow-y:auto;
+    background:linear-gradient(180deg, rgba(23,28,61,0.97), rgba(9,12,32,0.98));
+    border:1px solid rgba(255,207,122,0.4);
+    border-radius:24px;
+    box-shadow:0 24px 64px rgba(0,0,0,0.55), 0 0 40px rgba(255,207,122,0.12);
+    padding:26px 22px 22px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    text-align:center;
+    transform:scale(0.97);
+    opacity:0;
+    transition:transform 0.4s ease, opacity 0.4s ease;
+  }
+  .reward-modal.show .reward-card{ transform:scale(1); opacity:1; }
+  .reward-heading{
+    font-family:'Gowun Batang',serif;
+    color:var(--ivory);
+    font-size:1.1rem;
+    line-height:1.6;
+  }
+  .reward-heading .accent{ color:var(--moon-glow); }
+  .reward-image-wrap{
+    width:100%;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  }
+  .reward-image{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:78vh;
+    object-fit:contain;
+    background:var(--night-deep);
+    opacity:0;
+    animation:reward-img-in 0.7s ease 0.15s forwards;
+  }
+  @keyframes reward-img-in{ from{ opacity:0; } to{ opacity:1; } }
+  .reward-sub{
+    color:var(--ivory-dim);
+    font-size:0.88rem;
+    line-height:1.7;
+  }
+  .reward-close{
+    margin-top:2px;
+    background:linear-gradient(180deg, var(--lantern-soft), var(--lantern));
+    color:#26150a;
+    border:none;
+    font-weight:700;
+    padding:11px 28px;
+    border-radius:999px;
+    font-size:0.9rem;
+    min-height:44px;
+  }
+  @media (max-width:520px){
+    .reward-image{ max-height:68vh; }
+    .reward-card{ padding:20px 16px 18px; }
+  }
 
   /* ================= ENDING ================= */
   #ending{
@@ -1070,6 +1173,13 @@
         </svg>
       </button>
     </div>
+
+    <div class="hunt-complete" id="hunt-complete" hidden>
+      <div class="glyph">🌕 🐰</div>
+      <p class="lead">숨은 달토끼들을 모두 찾았어요!</p>
+      <p>오늘 밤의 달빛이<br>조금 더 밝아진 것 같아요.</p>
+      <button class="again-btn" id="reward-reopen">✦ 추석 선물 다시 보기</button>
+    </div>
   </div>
 </section>
 
@@ -1122,19 +1232,14 @@
 
 <div class="toast" id="toast"></div>
 
-<div class="complete-modal" id="complete-modal">
-  <div class="complete-card">
-    <div class="glyph">🌕 🐰</div>
-    <p>숨은 달토끼들을
-모두 찾았어요!
-
-달토끼들이 모두 모이자
-오늘 밤의 달빛이
-조금 더 환해진 것 같아요.
-
-오늘 하루
-좋은 일만 가득하길.</p>
-    <button class="close-btn" id="complete-close">계속 구경하기</button>
+<div class="reward-modal" id="reward-modal" aria-hidden="true">
+  <div class="reward-card" role="dialog" aria-modal="true" aria-label="추석 선물">
+    <p class="reward-heading">달토끼 3마리를 모두 찾았어요 <span class="accent">✦</span><br>추석의 선물이 도착했어요 <span class="accent">🌕</span></p>
+    <div class="reward-image-wrap">
+      <img class="reward-image" src="/images/chuseok/wony-hanbok.jpg" alt="한복을 입은 워니" />
+    </div>
+    <p class="reward-sub">달빛 아래 숨어 있던<br>달토끼들이 준비한 선물이에요.</p>
+    <button class="reward-close" id="reward-close">선물 간직하기</button>
   </div>
 </div>
 
@@ -1737,6 +1842,39 @@
     }
   }
 
+  /* ---------- reward modal (완료 선물) ---------- */
+  var REWARD_SEEN_KEY = 'chuseok_reward_seen_v1';
+  var huntCompleteEl = document.getElementById('hunt-complete');
+  var rewardModal = document.getElementById('reward-modal');
+
+  function showHuntComplete(){
+    if (huntCompleteEl) huntCompleteEl.hidden = false;
+  }
+  function openRewardModal(){
+    if (!rewardModal) return;
+    rewardModal.classList.add('show');
+    rewardModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeRewardModal(){
+    if (!rewardModal) return;
+    rewardModal.classList.remove('show');
+    rewardModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  if (rewardModal){
+    var rewardCloseBtn = document.getElementById('reward-close');
+    if (rewardCloseBtn) rewardCloseBtn.addEventListener('click', closeRewardModal);
+    rewardModal.addEventListener('click', function(e){
+      if (e.target === rewardModal) closeRewardModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && rewardModal.classList.contains('show')) closeRewardModal();
+    });
+  }
+  var reopenRewardBtn = document.getElementById('reward-reopen');
+  if (reopenRewardBtn) reopenRewardBtn.addEventListener('click', openRewardModal);
+
   document.querySelectorAll('.bunny-spot').forEach(function(spot){
     var id = spot.getAttribute('data-bunny');
     if (found.indexOf(id) !== -1) spot.classList.add('found');
@@ -1750,25 +1888,27 @@
 
       if (found.length >= 3){
         markMoonBright();
-        var alreadyCelebrated = false;
-        try { alreadyCelebrated = localStorage.getItem('chuseok_bunnies_celebrated') === '1'; } catch(e){}
-        if (!alreadyCelebrated){
+        var alreadySeen = false;
+        try { alreadySeen = localStorage.getItem(REWARD_SEEN_KEY) === '1'; } catch(e){}
+        if (!alreadySeen){
+          setTimeout(spawnSparkles, 350);
           setTimeout(function(){
-            spawnSparkles();
-            document.getElementById('complete-modal').classList.add('show');
-            try { localStorage.setItem('chuseok_bunnies_celebrated','1'); } catch(e){}
-          }, 900);
+            showHuntComplete();
+            openRewardModal();
+            try { localStorage.setItem(REWARD_SEEN_KEY, '1'); } catch(e){}
+          }, 850);
+        } else {
+          showHuntComplete();
         }
       }
     });
   });
 
-  document.getElementById('complete-close').addEventListener('click', function(){
-    document.getElementById('complete-modal').classList.remove('show');
-  });
-
   updateProgressUI();
-  if (found.length >= 3) markMoonBright();
+  if (found.length >= 3){
+    markMoonBright();
+    showHuntComplete();
+  }
 
   /* ---------- ending moon: brighten on arrival ---------- */
   if (endingMoonEl && 'IntersectionObserver' in window){
