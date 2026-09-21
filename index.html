@@ -133,27 +133,39 @@
   }
 
   /* ================= MUSIC TOGGLE ================= */
-  .music-toggle{
+  .music-control{
     position:fixed;
     top:calc(14px + env(safe-area-inset-top, 0px));
     right:14px;
     z-index:35;
     background:rgba(13,19,48,0.72);
     border:1px solid var(--panel-line);
-    color:var(--ivory);
-    padding:8px 14px;
     border-radius:999px;
-    font-size:0.8rem;
-    letter-spacing:0.02em;
+    padding:6px 12px;
     backdrop-filter:blur(4px);
     box-shadow:0 4px 14px rgba(0,0,0,0.3);
     display:flex;
     align-items:center;
-    gap:6px;
-    min-height:36px;
+    gap:8px;
     transition:background 0.2s ease, border-color 0.2s ease;
   }
-  .music-toggle:hover{ background:rgba(13,19,48,0.9); border-color:rgba(246,239,224,0.3); }
+  .music-control:hover{ background:rgba(13,19,48,0.9); border-color:rgba(246,239,224,0.3); }
+  .music-toggle{
+    background:none;
+    border:none;
+    color:var(--ivory);
+    font-size:0.8rem;
+    letter-spacing:0.02em;
+    padding:2px;
+    min-height:28px;
+    min-width:44px;
+  }
+  .music-volume{
+    width:56px;
+    height:24px;
+    accent-color:var(--moon-glow);
+    cursor:pointer;
+  }
 
   /* ================= INTRO ================= */
   #intro{
@@ -908,7 +920,10 @@
 </head>
 <body>
 <audio id="bgm" src="/audio/Moonlight_on_the_Hanok.mp3" loop preload="none"></audio>
-<button class="music-toggle" id="music-toggle" aria-label="배경음악 켜기/끄기">♪ OFF</button>
+<div class="music-control">
+  <button class="music-toggle" id="music-toggle" aria-label="배경음악 켜기/끄기">♪ OFF</button>
+  <input type="range" class="music-volume" id="music-volume" min="0" max="1" step="0.01" value="0.15" aria-label="배경음악 볼륨" />
+</div>
 
 <div id="stars"></div>
 <div id="sparkle-burst"></div>
@@ -1771,9 +1786,26 @@
 
   /* ---------- background music ---------- */
   var MUSIC_KEY = 'chuseok_music_pref_v1';
+  var VOLUME_KEY = 'chuseok_music_volume_v1';
   var bgm = document.getElementById('bgm');
   var musicBtn = document.getElementById('music-toggle');
-  bgm.volume = 0.18;
+  var volumeSlider = document.getElementById('music-volume');
+
+  var savedVolume = null;
+  try { savedVolume = parseFloat(localStorage.getItem(VOLUME_KEY)); } catch(e){}
+  var initialVolume = (isFinite(savedVolume) && savedVolume >= 0 && savedVolume <= 1) ? savedVolume : 0.15;
+  bgm.volume = initialVolume;
+  if (volumeSlider) volumeSlider.value = String(initialVolume);
+
+  if (volumeSlider){
+    volumeSlider.addEventListener('input', function(){
+      var v = parseFloat(volumeSlider.value);
+      if (!isFinite(v)) return;
+      bgm.volume = v;
+      try { localStorage.setItem(VOLUME_KEY, String(v)); } catch(e){}
+    });
+  }
+
   var musicPref = null;
   try { musicPref = localStorage.getItem(MUSIC_KEY); } catch(e){}
   var userDisabled = musicPref === 'off';
