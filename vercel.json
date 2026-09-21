@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/audio/:path*", "destination": "/public/audio/:path*" }
+    { "source": "/audio/:path*", "destination": "/assets/audio/:path*" }
   ]
 }
