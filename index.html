@@ -615,6 +615,69 @@
     text-align:center;
   }
 
+  /* ================= WISH STARS ================= */
+  .wish-stars-field{
+    position:relative;
+    height:260px;
+    margin:4px 0 18px;
+  }
+  .wish-stars-moon{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width:60px; height:60px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--moon-core), var(--moon) 45%, var(--moon-glow) 100%);
+    box-shadow:0 0 24px 8px rgba(255,207,122,0.22);
+    pointer-events:none;
+  }
+  .wish-star{
+    position:absolute;
+    background:none;
+    border:none;
+    padding:14px;
+    color:var(--moon-glow);
+    font-size:15px;
+    line-height:1;
+    cursor:pointer;
+    transform:translate(-50%,-50%) scale(var(--star-scale, 1));
+    opacity:var(--star-op, 0.7);
+    animation:wish-star-twinkle 4.5s ease-in-out infinite;
+  }
+  .wish-star:hover, .wish-star:focus-visible{ opacity:1; }
+  .wish-star.new{ animation:wish-star-pop 1.4s ease; }
+  @keyframes wish-star-twinkle{
+    0%,100%{ opacity:var(--star-op, 0.7); transform:translate(-50%,-50%) scale(var(--star-scale,1)); }
+    50%{ opacity:1; transform:translate(-50%,-50%) scale(calc(var(--star-scale,1) * 1.15)); }
+  }
+  @keyframes wish-star-pop{
+    0%{ opacity:0; transform:translate(-50%,-50%) scale(0.3); }
+    35%{ opacity:1; transform:translate(-50%,-50%) scale(1.6); }
+    100%{ opacity:var(--star-op,0.7); transform:translate(-50%,-50%) scale(var(--star-scale,1)); }
+  }
+  .wish-star-card{
+    padding:16px 18px;
+    border-radius:16px;
+    background:rgba(246,239,224,0.05);
+    border:1px solid rgba(246,239,224,0.12);
+    text-align:center;
+    animation:card-in 0.4s ease both;
+  }
+  .wish-star-card .mark{ color:var(--moon-glow); font-size:1rem; margin:0 0 6px; }
+  #wish-star-text{
+    font-family:'Gowun Batang',serif;
+    color:var(--ivory);
+    font-size:1rem;
+    line-height:1.7;
+    margin:0;
+  }
+  .wish-star-by{
+    margin:8px 0 0;
+    font-size:0.75rem;
+    color:var(--ivory-dim);
+    opacity:0.7;
+  }
+
   /* ================= BLESSING ================= */
   .blessing-card{
     background:linear-gradient(180deg, rgba(246,239,224,0.09), rgba(246,239,224,0.04));
@@ -642,6 +705,63 @@
     opacity:0.85;
     margin-top:-10px;
     margin-bottom:22px;
+  }
+
+  /* ================= YUT ================= */
+  .yut-sticks{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:6px 0 22px;
+  }
+  .yut-stick{
+    width:14px;
+    height:58px;
+    border-radius:8px;
+    background:linear-gradient(180deg, #e9dcc0, #c9b98c);
+    box-shadow:inset 0 0 0 1px rgba(58,42,18,0.25), 0 3px 6px rgba(0,0,0,0.3);
+    position:relative;
+  }
+  .yut-stick::after{
+    content:"";
+    position:absolute;
+    left:3px; right:3px; top:9px;
+    height:2px;
+    background:rgba(58,42,18,0.3);
+    border-radius:2px;
+  }
+  .yut-sticks.rolling .yut-stick{ animation:yut-roll 0.65s ease-in-out; }
+  .yut-sticks.rolling .yut-stick:nth-child(2){ animation-delay:0.04s; }
+  .yut-sticks.rolling .yut-stick:nth-child(3){ animation-delay:0.08s; }
+  .yut-sticks.rolling .yut-stick:nth-child(4){ animation-delay:0.12s; }
+  @keyframes yut-roll{
+    0%{ transform:rotate(0) translateY(0); }
+    25%{ transform:rotate(-18deg) translateY(-6px); }
+    50%{ transform:rotate(14deg) translateY(-2px); }
+    75%{ transform:rotate(-8deg) translateY(-4px); }
+    100%{ transform:rotate(0) translateY(0); }
+  }
+  .yut-result{
+    text-align:center;
+    margin-bottom:20px;
+    animation:card-in 0.5s cubic-bezier(.2,.8,.3,1) both;
+  }
+  .yut-label{
+    display:inline-block;
+    font-family:'Gowun Batang',serif;
+    font-size:1.3rem;
+    color:var(--moon-glow);
+    border:1px solid rgba(255,207,122,0.35);
+    border-radius:999px;
+    padding:6px 22px;
+    margin-bottom:12px;
+  }
+  .yut-text{
+    color:var(--ivory);
+    line-height:1.8;
+    font-size:0.98rem;
+    white-space:pre-line;
+    margin:0;
   }
 
   /* ================= PHOTOCARD ================= */
@@ -751,6 +871,18 @@
     font-size:0.92rem;
   }
   .hunt-complete .again-btn{ margin-top:6px; }
+
+  .dalnyang-say{
+    display:inline-block;
+    margin:0 0 22px;
+    padding:8px 16px;
+    background:rgba(246,239,224,0.06);
+    border:1px solid rgba(246,239,224,0.14);
+    border-radius:14px;
+    color:var(--ivory-dim);
+    font-size:0.82rem;
+    max-width:240px;
+  }
 
   /* ================= BUNNY ================= */
   .bunny-spot{
@@ -1139,9 +1271,49 @@
   </div>
 </section>
 
+<section id="wish-stars">
+  <div class="panel">
+    <span class="eyebrow">CHUSEOK · 03</span>
+    <h2 class="section-title">달빛 아래 모인 소원들 ✦</h2>
+    <p class="section-desc">누군가의 작은 소원들이<br>오늘 밤 달빛 아래 하나둘 모이고 있어요.</p>
+
+    <div class="wish-stars-field" id="wish-stars-field">
+      <div class="wish-stars-moon" aria-hidden="true"></div>
+    </div>
+
+    <div class="wish-star-card" id="wish-star-card" hidden>
+      <p class="mark">✦</p>
+      <p id="wish-star-text"></p>
+      <p class="wish-star-by">어느 누군가의 소원</p>
+    </div>
+  </div>
+</section>
+
+<section id="yut">
+  <div class="panel">
+    <span class="eyebrow">CHUSEOK · 04</span>
+    <h2 class="section-title">오늘의 윷 한 번 던지기</h2>
+    <p class="section-desc">달냥이와 함께<br>오늘의 윷을 한 번 던져보세요.</p>
+
+    <div class="yut-sticks" id="yut-sticks">
+      <span class="yut-stick"></span>
+      <span class="yut-stick"></span>
+      <span class="yut-stick"></span>
+      <span class="yut-stick"></span>
+    </div>
+
+    <div class="yut-result" id="yut-result" hidden>
+      <p class="yut-label" id="yut-label"></p>
+      <p class="yut-text" id="yut-text"></p>
+    </div>
+
+    <button class="primary-btn" id="yut-throw">윷 던지기</button>
+  </div>
+</section>
+
 <section id="blessing">
   <div class="panel" style="position:relative;">
-    <span class="eyebrow">CHUSEOK · 03</span>
+    <span class="eyebrow">CHUSEOK · 05</span>
     <h2 class="section-title">달토끼가 전하는 한가위 덕담 💌</h2>
     <p class="section-desc">오늘 필요한 말 한마디를<br>달토끼에게 받아보세요.</p>
 
@@ -1153,9 +1325,11 @@
 
 <section id="hunt">
   <div class="panel" style="position:relative;">
-    <span class="eyebrow">CHUSEOK · 04</span>
+    <span class="eyebrow">CHUSEOK · 06</span>
     <h2 class="section-title">숨은 달토끼 찾기 🐰</h2>
     <p class="section-desc">달빛 아래 어딘가에<br>달토끼들이 숨어 있어요.<br><br>숨은 달토끼 3마리를 모두 찾아보세요.</p>
+
+    <p class="dalnyang-say" id="dalnyang-say"></p>
 
     <div class="hunt-progress-row">
       <span>달토끼</span>
@@ -1186,7 +1360,7 @@
 
 <section id="photocard">
   <div class="panel">
-    <span class="eyebrow">CHUSEOK · 05</span>
+    <span class="eyebrow">CHUSEOK · 07</span>
     <h2 class="section-title">한가위의 한 장 🌕</h2>
     <p class="section-desc">오늘의 달빛을<br>짧은 한마디와 함께 남겨보세요.</p>
 
@@ -1436,6 +1610,83 @@
     }
   }
 
+  /* ---------- wish stars (달빛 아래 모인 소원들) ---------- */
+  var WISH_STAR_LIMIT = 15;
+  var wishStarsField = document.getElementById('wish-stars-field');
+  var wishStarCard = document.getElementById('wish-star-card');
+  var wishStarText = document.getElementById('wish-star-text');
+  var starWishOrder = [];
+  var starElsById = {};
+
+  function hashStr(str){
+    var h = 5381;
+    str = String(str);
+    for (var i=0;i<str.length;i++){ h = ((h*33) ^ str.charCodeAt(i)) >>> 0; }
+    return h;
+  }
+  function starLayout(id){
+    var h1 = hashStr(id + 'a');
+    var h2 = hashStr(id + 'b');
+    var h3 = hashStr(id + 'c');
+    var angle = (h1 % 1000)/1000 * Math.PI * 2;
+    var radius = 32 + (h2 % 1000)/1000 * 18;
+    var x = 50 + Math.cos(angle) * radius;
+    var y = 50 + Math.sin(angle) * radius * 0.78;
+    x = Math.max(7, Math.min(93, x));
+    y = Math.max(9, Math.min(91, y));
+    return {
+      x: x, y: y,
+      scale: (0.82 + (h3 % 1000)/1000 * 0.5).toFixed(2),
+      opacity: (0.55 + (h1 % 500)/500 * 0.35).toFixed(2),
+      delay: ((h3 % 400)/100).toFixed(2)
+    };
+  }
+  function createStarEl(row){
+    var pos = starLayout(row.id);
+    var btn = document.createElement('button');
+    btn.className = 'wish-star';
+    btn.style.left = pos.x + '%';
+    btn.style.top = pos.y + '%';
+    btn.style.setProperty('--star-scale', pos.scale);
+    btn.style.setProperty('--star-op', pos.opacity);
+    btn.style.animationDelay = pos.delay + 's';
+    btn.setAttribute('aria-label', '소원 보기');
+    btn.textContent = '✦';
+    btn.addEventListener('click', function(){
+      if (wishStarText) wishStarText.textContent = row.content;
+      if (wishStarCard) wishStarCard.hidden = false;
+    });
+    return btn;
+  }
+  function renderWishStars(rows){
+    if (!wishStarsField) return;
+    wishStarsField.querySelectorAll('.wish-star').forEach(function(el){ el.remove(); });
+    starElsById = {};
+    starWishOrder = [];
+    (rows || []).slice(0, WISH_STAR_LIMIT).forEach(function(row){
+      var el = createStarEl(row);
+      wishStarsField.appendChild(el);
+      starElsById[row.id] = el;
+      starWishOrder.push(row.id);
+    });
+  }
+  function addWishStar(row){
+    if (!wishStarsField || !row || !row.id || starElsById[row.id]) return;
+    var el = createStarEl(row);
+    el.classList.add('new');
+    wishStarsField.appendChild(el);
+    starElsById[row.id] = el;
+    starWishOrder.unshift(row.id);
+    setTimeout(function(){ el.classList.remove('new'); }, 1400);
+
+    if (starWishOrder.length > WISH_STAR_LIMIT){
+      var oldestId = starWishOrder.pop();
+      var oldestEl = starElsById[oldestId];
+      if (oldestEl && oldestEl.parentNode) oldestEl.parentNode.removeChild(oldestEl);
+      delete starElsById[oldestId];
+    }
+  }
+
   function loadWishWall(){
     if (!supa || !wishWallList) return;
     supa.from('chuseok_wishes')
@@ -1451,9 +1702,11 @@
           p.className = 'wish-wall-empty';
           p.textContent = '아직 도착한 소원이 없어요. 첫 소원을 남겨보세요.';
           wishWallList.appendChild(p);
+          renderWishStars([]);
           return;
         }
         rows.forEach(function(row){ renderWishWallItem(row.content, false); });
+        renderWishStars(rows);
       })
       .catch(function(){
         if (wishWallEmpty) wishWallEmpty.textContent = '소원들을 잠시 불러올 수 없어요.';
@@ -1464,11 +1717,12 @@
     if (!supa) return;
     supa.from('chuseok_wishes')
       .insert({ content: content })
-      .select('content')
+      .select('id,content')
       .then(function(res){
         if (res.error) throw res.error;
         var row = res.data && res.data[0];
         renderWishWallItem(row && row.content ? row.content : content, true);
+        if (row) addWishStar(row);
       })
       .catch(function(){});
   }
@@ -1589,6 +1843,61 @@
     blessingCard.textContent = BLESSINGS[idx];
     blessingCard.classList.remove('enter'); void blessingCard.offsetWidth; blessingCard.classList.add('enter');
   });
+
+  /* ---------- yut throw ---------- */
+  var YUT_RESULTS = [
+    { label:'도', text:'오늘은 작은 한 걸음부터.\n\n조금씩 움직이다 보면\n생각보다 멀리 갈 수 있을지도 몰라요.' },
+    { label:'개', text:'좋은 일이 두 걸음 가까워졌어요.\n\n조금만 더 힘내볼까요?' },
+    { label:'걸', text:'오늘은 천천히 가도 괜찮아요.\n\n결국 좋은 곳에 도착할 거예요.' },
+    { label:'윷', text:'오늘은 운이 꽤 좋은 날!\n\n뜻밖의 기회가 찾아올지도 몰라요. ✦' },
+    { label:'모', text:'오늘의 달빛이\n특별히 당신 편인 것 같아요. 🌕' }
+  ];
+  var yutSticks = document.getElementById('yut-sticks');
+  var yutResult = document.getElementById('yut-result');
+  var yutLabel = document.getElementById('yut-label');
+  var yutText = document.getElementById('yut-text');
+  var yutBtn = document.getElementById('yut-throw');
+  var yutRolling = false;
+
+  if (yutBtn){
+    yutBtn.addEventListener('click', function(){
+      if (yutRolling) return;
+      yutRolling = true;
+      yutBtn.disabled = true;
+      yutResult.hidden = true;
+      yutSticks.classList.remove('rolling'); void yutSticks.offsetWidth; yutSticks.classList.add('rolling');
+
+      setTimeout(function(){
+        var pick = YUT_RESULTS[Math.floor(Math.random()*YUT_RESULTS.length)];
+        yutLabel.textContent = pick.label;
+        yutText.textContent = pick.text;
+        yutResult.hidden = false;
+        yutSticks.classList.remove('rolling');
+        yutBtn.textContent = '한 번 더 던지기';
+        yutBtn.disabled = false;
+        yutRolling = false;
+      }, reduced ? 60 : 650);
+    });
+  }
+
+  /* ---------- dalnyang's line of the day ---------- */
+  var DALNYANG_LINES = [
+    '송편 먹을래?',
+    '달이 예쁘네요.',
+    '오늘은 조금 쉬어가도 괜찮아요.',
+    '맛있는 건 많이 먹어도 된대요.',
+    '좋은 일이 생길지도 몰라요.',
+    '...산책?',
+    '여기서 뭐 하고 있어요?',
+    '달 보고 가요.',
+    '즐거운 한가위 보내요.',
+    '소원 하나 빌었어요?',
+    '오늘도 좋은 하루.'
+  ];
+  var dalnyangSayEl = document.getElementById('dalnyang-say');
+  if (dalnyangSayEl){
+    dalnyangSayEl.textContent = DALNYANG_LINES[Math.floor(Math.random()*DALNYANG_LINES.length)];
+  }
 
   /* ---------- photocard ---------- */
   var pcCanvas = document.getElementById('photocard-canvas');
